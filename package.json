@@ -1,0 +1,26 @@
+{
+  "name": "fc-hackathon2022-squad16-front-end",
+  "version": "1.0.0",
+  "description": "Social platform made by tech professionals for tech professionals",
+  "main": "prettier.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SatokoHagiwara/FC-Hackathon2022-Squad15-FrontEnd.git"
+  },
+  "keywords": [],
+  "author": "Juliana Satoko Hagiwara Miura",
+  "contributors": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SatokoHagiwara/FC-Hackathon2022-Squad15-FrontEnd/issues"
+  },
+  "homepage": "https://github.com/SatokoHagiwara/FC-Hackathon2022-Squad15-FrontEnd#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "ws": "^8.5.0"
+  }
+}
