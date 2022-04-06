@@ -6,16 +6,15 @@ const port = 6969;
 const server = http.createServer(express);
 const wss = new WebSocket.Server({ server });
 
-wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(data) {
-    wss.clients.forEach(function each(client) {
+wss.on('connection', (ws) =>
+  ws.on('message', (data) => {
+    const message = data.toString();
+    wss.clients.forEach((client) => {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
-        client.send(data);
+        client.send(message);
       }
     });
-  });
-});
+  })
+);
 
-server.listen(port, function () {
-  console.log(`Server is listening on ${port}!`);
-});
+server.listen(port, () => console.log(`Server is listening on ${port}!`));
