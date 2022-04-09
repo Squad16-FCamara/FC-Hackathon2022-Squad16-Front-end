@@ -5,7 +5,8 @@
   "main": "prettier.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/SatokoHagiwara/FC-Hackathon2022-Squad15-FrontEnd#readme",
   "dependencies": {
     "express": "^4.17.3",
+    "nodemon": "^2.0.15",
     "ws": "^8.5.0"
   }
 }
