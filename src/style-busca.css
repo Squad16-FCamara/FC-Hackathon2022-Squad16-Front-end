@@ -26,13 +26,9 @@ header ul
 
 #logo
 {
-    font-family: 'Montserrat';
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 29px;
+    height: 40px;
     position: relative;
     left: 70px;
-    bottom: 12px;
     color: #262626;
 }
 
@@ -73,6 +69,9 @@ header ul
     width: 360px;
     height: 48px;
     background: #FFFFFF;
+    background-image: url(./icons/MagnifyingGlass.png);
+    background-repeat: no-repeat;
+    background-position: 20px 11px;
     border: 1px solid #FE662E;
     box-sizing: border-box;
     border-radius: 8px;
