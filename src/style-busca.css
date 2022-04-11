@@ -11,7 +11,9 @@ body
 header
 {
     background: #FFFFFF;
-    height: 72px;
+    width: 100vw;
+    max-height: 9.4vh;
+    flex-wrap: wrap;
 }
 
 header ul
@@ -19,16 +21,14 @@ header ul
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    margin-right: 70px;
+    font-size: 1em;
+    margin-right: 4.7vw;
 }
 
 #logo
 {
-    height: 40px;
-    position: relative;
-    left: 70px;
+    height: 5.2vh;
+    margin-left: 4.6vw;
     color: #262626;
 }
 
@@ -56,18 +56,17 @@ header ul
 {
     font-family: 'Montserrat';
     font-weight: normal;
-    margin-left: 160px;
-    margin-right: 160px;
-    margin-top: 49px;
-    margin-bottom: 73px;
+    padding-inline: 10.7vw;
+    padding-top: 49px;
+    padding-bottom: 73px;
 }
 
 /* Barra de pesquisa e filtros */
 
 #search-bar
 {
-    width: 360px;
-    height: 48px;
+    max-width: 24vw;
+    max-height: 6.3vh;
     background: #FFFFFF;
     background-image: url(./icons/MagnifyingGlass.png);
     background-repeat: no-repeat;
@@ -95,9 +94,9 @@ header ul
 
 #search-filter select
 {
-    margin-left: 16px;
-    width: 149px;
-    height: 48px;
+    margin-left: 1vw;
+    width: 10vw;
+    height: 6.3vh;
     border: 1px solid #FE662E;
     box-sizing: border-box;
     border-radius: 8px;
@@ -113,26 +112,33 @@ header ul
 #mentor
 {
     display: flex;
-    width: 1120px;
-    height: 252px;
+    flex-wrap: wrap;    
+    max-width: 1120px;
     background: #FFFFFF;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
     color: #262626;
     align-items: center;
+    justify-content: center;
     gap: 30px;
     margin-top: 24px;
+    padding-block: 32px;
+    padding-inline: 32px;
 }
 
 #profile
 {
-    width: 188px;
-    height: 188px;
+    max-width: 188px;
     border-radius: 100%;
     border: 4px solid #FE662E;
-    box-sizing: border-box;
-    margin-left: 32px;
     padding: 14px;
+}
+
+#mentor-info
+{
+    max-width: 554px;
+    padding-left: 24px;
+    padding-right: 34px;
 }
 
 #tags-mentor
@@ -154,6 +160,12 @@ header ul
     color: #FFFFFF;
     padding-block: 8px;
     padding-inline: 16px;
+}
+
+#btns
+{
+    max-width: 246px;
+    padding-right: 10px;
 }
 
 .btn-perfil
@@ -185,4 +197,35 @@ header ul
     color: #FFFFFF;
     border: none;
     margin-bottom: 8px;
+}
+
+@media only screen and (max-width: 587px) {
+
+header
+{
+    max-height: 20.4vh;
+}
+
+#logo
+{
+    margin-left: 1.5vw;
+}
+
+header ul
+{
+    margin-right: 0.7vw;
+}
+
+#container
+{
+    padding-inline: 0vw;
+    padding-top: 49px;
+    padding-bottom: 73px;
+}
+
+#search-bar
+{
+    max-width: 60vw;
+}
+
 }
