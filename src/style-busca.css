@@ -65,12 +65,12 @@ header ul
 
 #search-bar
 {
-    max-width: 24vw;
-    max-height: 6.3vh;
+    width: 360px;
+    height: 48px;
     background: #FFFFFF;
     background-image: url(./icons/MagnifyingGlass.png);
     background-repeat: no-repeat;
-    background-position: 20px 11px;
+    background-position: 17px 11px;
     border: 1px solid #FE662E;
     box-sizing: border-box;
     border-radius: 8px;
@@ -95,8 +95,8 @@ header ul
 #search-filter select
 {
     margin-left: 1vw;
-    width: 10vw;
-    height: 6.3vh;
+    width: 149px;
+    height: 48px;
     border: 1px solid #FE662E;
     box-sizing: border-box;
     border-radius: 8px;
@@ -199,7 +199,7 @@ header ul
     margin-bottom: 8px;
 }
 
-@media only screen and (max-width: 587px) {
+@media only screen and (max-width: 700px) {
 
 header
 {
@@ -225,7 +225,28 @@ header ul
 
 #search-bar
 {
-    max-width: 60vw;
+    width: 260px;
+    height: 48px;
+}
+
+#search-filter
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vw;
+}
+
+#search-filter select
+{
+    width: 260px;
+    height: 48px;
+
+}
+
+#container
+{
+    padding-top: 15px;
 }
 
 }
