@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@400;500;600;800&display=swap');
+
+body
+{
+    background: #F7F7F7;
+}
+
+/* Header */
+
+header
+{
+    background: #FFFFFF;
+    width: 100vw;
+    max-height: 9.4vh;
+    flex-wrap: wrap;
+}
+
+header ul
+{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1em;
+    margin-right: 4.7vw;
+}
+
+#logo
+{
+    height: 5.2vh;
+    margin-left: 4.6vw;
+    color: #262626;
+}
+
+.nav-link
+{
+    color: #262626 !important;
+    margin-top: 3px;
+    font-weight: 500;
+}
+
+#mini-profile
+{
+    position: relative;
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 100%;
+    bottom: 9px;
+    border: 1px solid #36357E;
+    padding: 3px;
+}
+
+/* Resto da pagina */
+
+#container
+{
+    font-family: 'Montserrat';
+    font-weight: normal;
+    padding-inline: 10.7vw;
+    padding-top: 49px;
+    padding-bottom: 73px;
+}
+
+/* Barra de pesquisa e filtros */
+
+#search-bar
+{
+    width: 360px;
+    height: 48px;
+    background: #FFFFFF;
+    background-image: url(../../images/MagnifyingGlass.png);
+    background-repeat: no-repeat;
+    background-position: 17px 11px;
+    border: 1px solid #FE662E;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding-left: 48px;
+    padding-right: 15px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+#search-bar:focus
+{
+    outline: none;
+}
+
+#search-filter
+{
+    display: flex;
+}
+
+#search-filter select
+{
+    margin-left: 1vw;
+    width: 149px;
+    height: 48px;
+    border: 1px solid #FE662E;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+/* Mentores */
+
+#mentores
+{
+    margin-top: 32px;
+}
+
+#mentor
+{
+    display: flex;
+    flex-wrap: wrap;    
+    max-width: 1120px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    color: #262626;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 24px;
+    padding-block: 32px;
+    padding-inline: 32px;
+}
+
+#profile
+{
+    max-width: 188px;
+    border-radius: 100%;
+    border: 4px solid #FE662E;
+    padding: 14px;
+}
+
+#mentor-info
+{
+    max-width: 554px;
+    padding-left: 24px;
+    padding-right: 34px;
+}
+
+#tags-mentor
+{
+    display: flex;
+    gap: 8px;
+}
+
+#tags-mentor p
+{
+    background: #36357E;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    font-family: 'Montserrat';
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FFFFFF;
+    padding-block: 8px;
+    padding-inline: 16px;
+}
+
+#btns
+{
+    max-width: 246px;
+    padding-right: 10px;
+}
+
+.btn-perfil
+{
+    width: 246px;
+    height: 48px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 100px;
+    box-sizing: border-box;
+    border: 1px solid #36357E;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    color: #36357E;
+    margin-top: 8px;
+}
+
+.btn-agendar
+{
+    width: 246px;
+    height: 48px;
+    background: #FE662E;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    color: #FFFFFF;
+    border: none;
+    margin-bottom: 8px;
+}
+
+@media only screen and (max-width: 700px) {
+
+header
+{
+    max-height: 20.4vh;
+}
+
+#logo
+{
+    margin-left: 1.5vw;
+}
+
+header ul
+{
+    margin-right: 0.7vw;
+}
+
+#container
+{
+    padding-inline: 0vw;
+    padding-top: 49px;
+    padding-bottom: 73px;
+}
+
+#search-bar
+{
+    width: 260px;
+    height: 48px;
+}
+
+#search-filter
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vw;
+}
+
+#search-filter select
+{
+    width: 260px;
+    height: 48px;
+
+}
+
+#container
+{
+    padding-top: 15px;
+}
+
+}
