@@ -1,94 +1,102 @@
-class InteractiveChatbox {
-  constructor(a, b, c) {
-    this.args = {
-      button: a,
-      chatbox: b,
-    };
-    this.icons = c;
-    this.state = false;
+var socket = io();
+
+var userlist = document.getElementById('active_users_list');
+var roomlist = document.getElementById('active_rooms_list');
+var message = document.getElementById('messageInput');
+var sendMessageBtn = document.getElementById('send_message_btn');
+var roomInput = document.getElementById('roomInput');
+var createRoomBtn = document.getElementById('room_add_icon_holder');
+var chatDisplay = document.getElementById('chat');
+
+var currentRoom = 'global';
+var myUsername = '';
+
+// Prompt for username on connecting to server
+socket.on('connect', function () {
+  myUsername = prompt('Enter name: ');
+  socket.emit('createUser', myUsername);
+});
+
+// Send message on button click
+sendMessageBtn.addEventListener('click', function () {
+  socket.emit('sendMessage', message.value);
+  message.value = '';
+});
+
+// Send message on enter key press
+message.addEventListener('keyup', function (event) {
+  if (event.key === 'Enter') {
+    sendMessageBtn.click();
+  }
+});
+
+// Create new room on button click
+createRoomBtn.addEventListener('click', function () {
+  // socket.emit("createRoom", prompt("Enter new room: "));
+  let roomName = roomInput.value.trim();
+  if (roomName !== '') {
+    socket.emit('createRoom', roomName);
+    roomInput.value = '';
+  }
+});
+
+socket.on('updateChat', function (username, data) {
+  if (username === 'INFO') {
+    console.log('Displaying announcement');
+    chatDisplay.innerHTML += `<div class="announcement"><span>${data}</span></div>`;
+  } else {
+    console.log('Displaying user message');
+    chatDisplay.innerHTML += `<div class="message_holder ${
+      username === myUsername ? 'me' : ''
+    }">
+                                <div class="pic"></div>
+                                <div class="message_box">
+                                  <div id="message" class="message">
+                                    <span class="message_name">${username}</span>
+                                    <span class="message_text">${data}</span>
+                                  </div>
+                                </div>
+                              </div>`;
   }
 
-  display() {
-    const { button, chatbox } = this.args;
+  chatDisplay.scrollTop = chatDisplay.scrollHeight;
+});
 
-    button.addEventListener('click', () => this.toggleState(chatbox));
+socket.on('updateUsers', function (usernames) {
+  userlist.innerHTML = '';
+  console.log('usernames returned from server', usernames);
+  for (var user in usernames) {
+    userlist.innerHTML += `<div class="user_card">
+                              <div class="pic"></div>
+                              <span>${user}</span>
+                            </div>`;
+  }
+});
+
+socket.on('updateRooms', function (rooms, newRoom) {
+  roomlist.innerHTML = '';
+
+  for (var index in rooms) {
+    roomlist.innerHTML += `<div class="room_card" id="${rooms[index].name}"
+                                onclick="changeRoom('${rooms[index].name}')">
+                                <div class="room_item_content">
+                                    <div class="pic"></div>
+                                    <div class="roomInfo">
+                                    <span class="room_name">#${rooms[index].name}</span>
+                                    <span class="room_author">${rooms[index].creator}</span>
+                                    </div>
+                                </div>
+                            </div>`;
   }
 
-  toggleState(chatbox) {
-    this.state = !this.state;
-    this.showOrHideChatBox(chatbox, this.args.button);
-  }
+  document.getElementById(currentRoom).classList.add('active_item');
+});
 
-  showOrHideChatBox(chatbox, button) {
-    if (this.state) {
-      chatbox.classList.add('chatbox--active');
-      this.toggleIcon(true, button);
-    } else if (!this.state) {
-      chatbox.classList.remove('chatbox--active');
-      this.toggleIcon(false, button);
-    }
-  }
-
-  toggleIcon(state, button) {
-    const { isClicked, isNotClicked } = this.icons;
-    let b = button.children[0].innerHTML;
-
-    if (state) {
-      button.children[0].innerHTML = isClicked;
-    } else if (!state) {
-      button.children[0].innerHTML = isNotClicked;
-    }
+function changeRoom(room) {
+  if (room != currentRoom) {
+    socket.emit('updateRooms', room);
+    document.getElementById(currentRoom).classList.remove('active_item');
+    currentRoom = room;
+    document.getElementById(currentRoom).classList.add('active_item');
   }
 }
-
-const chatButton = document.querySelector('.chatbox__button');
-const chatContent = document.querySelector('.chatbox__support');
-const icons = {
-  isClicked: 'Clicado',
-  isNotClicked: 'Sem clicar',
-};
-const chatbox = new InteractiveChatbox(chatButton, chatContent, icons);
-chatbox.display();
-chatbox.toggleIcon(false, chatButton);
-
-(function () {
-  const sendBtn = document.querySelector('#send');
-  const messages = document.querySelector('#messages');
-  const messageBox = document.querySelector('#messageBox');
-
-  let ws;
-
-  function showMessage(message) {
-    messages.textContent += `\n\n${message}`;
-    messages.scrollTop = messages.scrollHeight;
-    messageBox.value = '';
-  }
-
-  function init() {
-    if (ws) {
-      ws.onerror = ws.onopen = ws.onclose = null;
-      ws.close();
-    }
-
-    ws = new WebSocket('ws://localhost:6969');
-    ws.onopen = () => {
-      console.log('Connection opened!');
-    };
-    ws.onmessage = ({ data }) => showMessage(data);
-    ws.onclose = function () {
-      ws = null;
-    };
-  }
-
-  sendBtn.onclick = function () {
-    if (!ws) {
-      showMessage('No WebSocket connection :(');
-      return;
-    }
-
-    ws.send(messageBox.value);
-    showMessage(messageBox.value);
-  };
-
-  init();
-})();
