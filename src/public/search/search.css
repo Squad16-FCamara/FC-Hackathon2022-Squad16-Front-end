@@ -39,6 +39,11 @@ header ul
     font-weight: 500;
 }
 
+.nav-link:hover
+{
+    opacity: 70%;
+}
+
 #mini-profile
 {
     position: relative;
@@ -80,11 +85,6 @@ header ul
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
-}
-
-#search-bar:focus
-{
-    outline: none;
 }
 
 #search-filter
@@ -197,6 +197,16 @@ header ul
     color: #FFFFFF;
     border: none;
     margin-bottom: 8px;
+}
+
+.btn-perfil:hover
+{
+    opacity: 50%;
+}
+
+.btn-agendar:hover
+{
+    opacity: 50%;
 }
 
 @media only screen and (max-width: 700px) {
