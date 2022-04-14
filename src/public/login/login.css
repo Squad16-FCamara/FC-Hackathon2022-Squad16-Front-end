@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #ffffff;
+}
+
+ion-icon{
+  color: #fe662e;
+}
+
+.container {
+  display: flex;
+}
+
+.container .left-side img {
+  width: 66.18055%;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+}
+
+.right-side {
+  padding: 60px 60px;
+}
+
+.padding {
+  padding: 0 0 0 20px;
+}
+
+.center{
+  text-align: center;
+}
+
+.container .right-side {
+  width: 33.81944%;
+  height: 100%;
+  position: fixed;
+  right: 0;
+}
+
+.container .right-side .logo-image {
+  width: 312px;
+  height: 56px;
+}
+
+.bem-vindo {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  margin-top: 50px;
+  margin-bottom: 5px;
+}
+
+.entre-usuario-senha {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 15px;
+  color: #888383;
+  margin-bottom: 50px;
+}
+
+.right-side .input-style {
+  height: 35px;
+  padding: 3px 5px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #434343;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.right-side .input-style input {
+  height: 30px;
+  border: none;
+  outline: none;
+}
+
+.right-side .input-style .password {
+  margin-top: 5px;
+}
+
+.usuario-senha {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.right-side p span {
+  color: #fe662e;
+}
+
+.myButton {
+  background-color: #fe652e;
+  border-radius: 28px;
+  border: 1px solid #fe652e;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 11px 68px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #fe652e;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 50px;
+  margin: 50px 20px 0 70px;
+}
+
+.myButton:hover {
+  background-color: #f88858;
+}
+
+@media(max-width:420px){
+  .container .left-side img{
+    display: none;
+  }
+
+  .container .right-side{
+    width: 100%;
+  }
+
+  .myButton{
+    margin: 40px 20px 20px 45px;
+  }
+
+  .logo-image{
+    margin-left:-25px;
+  }
+
+}
+
+@media(max-width:300px){
+  .container .left-side img{
+    display: none;
+  }
+
+  .container .right-side{
+    width: 100%;
+  }
+
+  .myButton{
+    margin:40px 10px 10px 0px;
+  }
+
+  .logo-image{
+    max-width:230px;
+  }
+
+  .right-side .input-style{
+    width: 100%;
+  }
+
+  .right-side .input-style input{
+    width: 100%;
+  }
+}
+
+
