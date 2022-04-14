@@ -7,6 +7,10 @@ body {
   background: #ffffff;
 }
 
+ion-icon{
+  color: #fe662e;
+}
+
 .container {
   display: flex;
 }
@@ -24,8 +28,12 @@ body {
   padding: 60px 60px;
 }
 
-.center {
+.padding {
   padding: 0 0 0 20px;
+}
+
+.center{
+  text-align: center;
 }
 
 .container .right-side {
@@ -57,7 +65,6 @@ body {
 }
 
 .right-side .input-style {
-  width: 354.37pxpx;
   height: 35px;
   padding: 3px 5px;
   display: flex;
@@ -106,6 +113,51 @@ body {
 
 .myButton:hover {
   background-color: #f88858;
+}
+
+@media(max-width:420px){
+  .container .left-side img{
+    display: none;
+  }
+
+  .container .right-side{
+    width: 100%;
+  }
+
+  .myButton{
+    margin: 40px 20px 20px 45px;
+  }
+
+  .logo-image{
+    margin-left:-25px;
+  }
+
+}
+
+@media(max-width:300px){
+  .container .left-side img{
+    display: none;
+  }
+
+  .container .right-side{
+    width: 100%;
+  }
+
+  .myButton{
+    margin:40px 10px 10px 0px;
+  }
+
+  .logo-image{
+    max-width:230px;
+  }
+
+  .right-side .input-style{
+    width: 100%;
+  }
+
+  .right-side .input-style input{
+    width: 100%;
+  }
 }
 
 
