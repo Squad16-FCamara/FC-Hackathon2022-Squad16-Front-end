@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Chat App</title>
+    <title>technicalshare chat</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
 
@@ -22,15 +24,14 @@
   </head>
 
   <body>
-
     <div id="popup_chat" class="app chatbox">
       <div class="chat_app">
         <div id="sidebar" class="left_sidebar">
           <div class="logo_text">
-            <span>Chat <span class="colored">App</span></span>
+            <span>technical<span class="colored">share</span></span>
           </div>
 
-          <span class="user_label">Users</span>
+          <span class="user_label">Usuários</span>
           <div id="active_users_list" class="active_users_list"></div>
         </div>
 
@@ -42,41 +43,35 @@
               <input
                 type="text"
                 id="messageInput"
-                placeholder="Enter message"
+                placeholder="Escreva uma mensagem..."
               />
               <button id="send_message_btn" class="send_message_btn" id="send">
-                SEND
+                ENVIAR
               </button>
             </div>
           </div>
         </div>
 
-        <div class="right_sidebar">
-          <span class="room_label">Rooms</span>
+        <!--<div class="right_sidebar">
+          <span class="room_label">Salas</span>
           <div id="active_rooms_list" class="active_rooms_list"></div>
 
           <div class="room_input">
-            <input type="text" id="roomInput" placeholder="Create room" />
+            <input type="text" id="roomInput" placeholder="Crie uma sala..." />
             <button id="room_add_icon_holder" class="room_add_icon_holder">
               +
             </button>
           </div>
-        </div>
+        </div>-->
+
       </div>
     </div>
 
-      <button id="popup_button">Button</button>
-
-
+    <button class="buttonChat" id="popup_button">
+      <img src="../images/logo-chat.png" alt="Botão chat" />
+    </button>
 
     <script src="chat.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-
