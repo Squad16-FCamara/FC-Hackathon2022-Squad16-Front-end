@@ -1,7 +1,7 @@
 const token = localStorage.getItem('token');
 
 function loadMentors() {
-  const url = 'https://squad-sixteen-backend.herokuapp.com/users';
+  const url = 'https://squad-sixteen-backend.herokuapp.com/search';
 
   $(document).ready(function () {
     $.ajax({
@@ -11,7 +11,7 @@ function loadMentors() {
       success: function (data) {
         let myResponse = data.users.filter(isMentor && isMyProfile);
 
-        console.log(myResponse)
+        console.log(myResponse);
 
         myResponse.forEach((users) => {
           $(mentorComponent(users)).appendTo('#mentores');
