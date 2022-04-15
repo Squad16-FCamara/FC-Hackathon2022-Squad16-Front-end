@@ -1,5 +1,5 @@
 function loadMentors() {
-  const url = 'http://localhost:3333/users';
+  const url = 'http://localhost:3333/search';
 
   $(document).ready(function () {
     $.ajax({
@@ -74,7 +74,7 @@ function isMentor(user) {
 }
 
 function isMyProfile(user) {
-  return user.id != localStorage.getItem("userID");
+  return user.id != localStorage.getItem('userID');
 }
 
 function loadProfileImage() {
