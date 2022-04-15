@@ -1,5 +1,5 @@
 function loadMentors() {
-  const url = 'http://localhost:3333/users';
+  const url = 'https://squad-sixteen-backend.herokuapp.com/users';
 
   $(document).ready(function () {
     $.ajax({
@@ -20,7 +20,7 @@ function loadMentors() {
 }
 
 function searchMentorByName() {
-  const url = 'http://localhost:3333/search/';
+  const url = 'https://squad-sixteen-backend.herokuapp.com/search/';
 
   $(document).ready(function () {
     $('#search-bar').keypress(function (event) {
@@ -68,7 +68,7 @@ function searchMentorByName() {
 }
 
 function goToMentorPage(id) {
-  window.location = '../profile/index.html?id=' + id;
+  window.location = '/profile/index.html?id=' + id;
 }
 
 function isMentor(user) {

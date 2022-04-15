@@ -21,7 +21,7 @@ function queryString(parameter) {
 }
 
 function loadMentor() {
-  const url = 'http://localhost:3333/user/';
+  const url = 'https://squad-sixteen-backend.herokuapp.com/user/';
 
   $(document).ready(function () {
     $.ajax({
@@ -80,7 +80,7 @@ $(document).ready(function () {
     alert('MENTORIA AGENDADA COM SUCESSO!!!');
     console.log(selected);
 
-    fetch('http://localhost:3333/connect', {
+    fetch('https://squad-sixteen-backend.herokuapp.com/connect', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

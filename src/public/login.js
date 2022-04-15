@@ -7,7 +7,7 @@ function login() {
       const obj = { email: user, password: password };
 
       $.ajax({
-        url: 'http://localhost:3333/auth',
+        url: 'https://squad-sixteen-backend.herokuapp.com/auth',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(obj),
@@ -20,7 +20,7 @@ function login() {
           localStorage.setItem('username', data.user.name);
           localStorage.setItem('id', data.user.id);
 
-          window.location = '/src/public/search/index.html';
+          window.location = '/search/index.html';
         },
       });
     });

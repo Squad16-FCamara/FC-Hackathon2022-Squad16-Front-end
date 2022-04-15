@@ -8,7 +8,7 @@ const search = document.getElementById('search');
 let currentRoom = 'global';
 const myUsername = localStorage.getItem('username');
 const myId = parseInt(localStorage.getItem('id'));
-const socket = io('http://localhost:3333');
+const socket = io('https://squad-sixteen-backend.herokuapp.com');
 let users = [];
 let selectedUser = undefined;
 const token = localStorage.getItem('token');
@@ -79,7 +79,7 @@ async function loadChatData() {
     },
   };
 
-  const rawData = await fetch('http://localhost:3333/connect', fetchProps);
+  const rawData = await fetch('https://squad-sixteen-backend.herokuapp.com/connect', fetchProps);
 
   const { connectedUsers } = await rawData.json();
 
