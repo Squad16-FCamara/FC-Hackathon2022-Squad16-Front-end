@@ -43,7 +43,7 @@ function loadMentor() {
 
 function loadProfileImage() {
   $(document).ready(function () {
-    $('#mini-profile').attr('src', localStorage.getItem('profileImg'));
+    $('.mini-profile').attr('src', localStorage.getItem('profileImg'));
   });
 }
 
@@ -77,7 +77,7 @@ $(document).ready(function () {
     selected.push(document.querySelector('#duracao .selected').textContent);
     $('div').removeClass('selected');
     $('p').removeClass('selected');
-    alert('mentoria agendada');
+    alert('MENTORIA AGENDADA COM SUCESSO!!!');
     console.log(selected);
 
     fetch('http://localhost:3333/connect', {
