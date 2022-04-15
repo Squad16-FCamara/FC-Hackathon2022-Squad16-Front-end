@@ -1,5 +1,5 @@
 function loadMentors() {
-  const url = 'http://localhost:3333/search';
+  const url = 'http://localhost:3333/users';
 
   $(document).ready(function () {
     $.ajax({
@@ -8,6 +8,8 @@ function loadMentors() {
       headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
       success: function (data) {
         let myResponse = data.users.filter(isMentor && isMyProfile);
+
+        console.log(myResponse)
 
         myResponse.forEach((users) => {
           $(mentorComponent(users)).appendTo('#mentores');

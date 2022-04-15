@@ -19,11 +19,14 @@ function login() {
           localStorage.setItem('profileImg', data.user.profileImgUrl);
           localStorage.setItem('username', data.user.name);
           localStorage.setItem('id', data.user.id);
-          window.location = '../search/index.html';
+
+          window.location = '/src/public/search/index.html';
         },
       });
     });
   });
 }
+
+
 
 login();
