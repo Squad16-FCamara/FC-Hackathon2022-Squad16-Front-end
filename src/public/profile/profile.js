@@ -25,13 +25,18 @@ function loadMentor(){
     const url = 'http://localhost:3333/user/'
 
     $(document).ready(function(){
-        $.get(url + id, function( data ){
-            let myResponse = data.user
+        $.ajax({
+            url: url + id,
+            type: 'GET',
+            headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+            success: function ( data ){
+                let myResponse = data.user
 
-            $("#name-mentor").html(myResponse.name)
-            $("#jobTitle-mentor").html(myResponse.jobTitle)
-            $("#aboutMe").html(myResponse.about)
-            $("#tags-mentor").append(skillComponent(myResponse.skills))
+                $("#name-mentor").html(myResponse.name)
+                $("#jobTitle-mentor").html(myResponse.jobTitle)
+                $("#aboutMe").html(myResponse.about)
+                $("#tags-mentor").append(skillComponent(myResponse.skills))
+            }
         })
     })
 }

@@ -2,12 +2,17 @@ function loadMentors(){
     const url = 'http://localhost:3333/users'
 
     $(document).ready(function(){
-        $.get(url, function( data ){
-            let myResponse = data.users.filter(isMentor)
+        $.ajax({
+            url: url,
+            type: 'GET',
+            headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+            success: function ( data ){
+                let myResponse = data.users.filter(isMentor)
 
-            myResponse.forEach(users => {
-                $(mentorComponent(users)).appendTo("#mentores");
-            });
+                myResponse.forEach(users => {
+                    $(mentorComponent(users)).appendTo("#mentores");
+                });
+            }
         })
     })
 }
@@ -23,28 +28,38 @@ function searchMentorByName(){
                 var searchValue = $("#search-bar").val();
             }
 
-            $.get(url + `?name=${searchValue}`, function( data ){
-                let myResponse = data.users
+            $.ajax({
+                url: url + `?name=${searchValue}`,
+                type: 'GET',
+                headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+                success: function ( data ){
+                    let myResponse = data.users
 
-                $("#mentores").empty();
-        
-                myResponse.forEach(users => {
-                    $(mentorComponent(users)).appendTo("#mentores");
-                });
+                    $("#mentores").empty();
+            
+                    myResponse.forEach(users => {
+                        $(mentorComponent(users)).appendTo("#mentores");
+                    });
+                }
             })
         })
         
         $("#search-bar").focusout(function(){
             var searchValue = $("#search-bar").val();
+            
+            $.ajax({
+                url: url + `?name=${searchValue}`,
+                type: 'GET',
+                headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+                success: function ( data ){
+                    let myResponse = data.users
 
-            $.get(url + `?name=${searchValue}`, function( data ){
-                let myResponse = data.users
+                    $("#mentores").empty();
 
-                $("#mentores").empty();
-
-                myResponse.forEach(users => {
-                    $(mentorComponent(users)).appendTo("#mentores");
-                });
+                    myResponse.forEach(users => {
+                        $(mentorComponent(users)).appendTo("#mentores");
+                    });
+                }
             })
         })
     })
