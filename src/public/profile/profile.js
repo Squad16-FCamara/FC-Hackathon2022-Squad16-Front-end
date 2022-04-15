@@ -66,6 +66,10 @@ $(document).ready(function () {
     $(this).addClass('selected');
   });
 
+  $('#close').click(function () {
+    $('#confirmacao').addClass('off');
+  });
+
   $('#agendar').click(function () {
     selected.push(
       document.querySelectorAll('#dias .selected p')[0].textContent
