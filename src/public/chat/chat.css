@@ -10,6 +10,16 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.my_message {
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  box-shadow: 0px 10px 10px rgba(113, 113, 113, 0.1);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+}
+
 .buttonChat {
   outline: none;
   border: none;
@@ -57,6 +67,7 @@ button img {
   border-radius: 4px;
   padding-left: 10px;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .light_blue_background{
@@ -321,56 +332,6 @@ button.enter_chat_btn {
   color: rgb(55, 65, 81);
 }
 
-.active_rooms_list {
-  display: flex;
-  flex-direction: column;
-  flex: 100;
-  width: 100%;
-  overflow-y: auto;
-  padding: 10px;
-}
-
-.room_card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 10px;
-  padding: 7px 10px;
-  margin: 5px 0;
-  cursor: pointer;
-}
-
-.room_item_content {
-  display: flex;
-  flex: 2;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.room_item_controls {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.roomInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.room_name {
-  color: rgb(31, 41, 55);
-  margin-bottom: 0.2rem;
-}
-
-.room_author {
-  font-size: 0.875rem;
-  color: rgb(75, 85, 99);
-}
-
 .badge {
   padding: 2px 8px;
   margin: 3px;
@@ -457,7 +418,7 @@ button:focus {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  /* background-color: teal; */
+  /* background: lightgray; */
   /* padding: 10px 0; */
   margin: 10px 0;
 }
@@ -481,7 +442,7 @@ button:focus {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #fff;
+  background: #E5E5E5;
   box-shadow: 0px 10px 10px rgba(113, 113, 113, 0.1);
   border-radius: 10px;
   padding: 0.75rem 1rem;
@@ -535,46 +496,75 @@ button:focus {
   padding: 0.75rem;
 }
 
-.room_input {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  /* background-color: pink; */
-  border-radius: 10px;
-  margin: 10px 0;
-  padding: 10px 0;
-  width: 100%;
-}
-
-.room_input input {
-  flex: 1;
-  border: 1px solid #d3d6e2;
-  /* border-radius: 10px; */
-  color: rgb(55, 65, 81);
-  font-size: 14px;
-  padding: 10px;
-  margin-right: 5px;
-  border: 0;
-  border-bottom: 1px solid #d3d6e2;
-}
-
-.room_add_icon_holder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  background-color: #fe662e;
-  border-radius: 4px;
-  padding: 5px 8px;
-  color: #fff;
-  font-weight: 500;
-  font-size: 24px;
-}
-
 .icon {
   background-color: red;
   margin: 0;
   padding: 0;
+}
+
+@media(max-width: 920px){
+  .body{
+    position: relative;
+  }
+
+  .buttonChat{
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  div.light_blue_background{
+    display: none;
+  }
+
+  chat.chat{
+    display: none;
+  }
+
+  div.chat_input{
+    display: none;
+  }
+
+  div#message.message{
+    display: none;
+  }
+
+div#chat.chat{
+  display: none;
+}
+
+.chat_area{
+  display: none;
+}
+
+}
+
+
+@media(max-width: 640px){
+  .body{
+    position: relative;
+  }
+
+  .buttonChat{
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  div.light_blue_background{
+    display: none;
+  }
+
+  chat.chat{
+    display: none;
+  }
+
+  div.chat_input{
+    display: none;
+  }
+
+div#chat.chat{
+  display: none;
+}
+
 }
