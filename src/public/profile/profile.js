@@ -76,7 +76,7 @@ $(document).ready(function () {
     selected.push(document.querySelector('#duracao .selected').textContent);
     $('div').removeClass('selected');
     $('p').removeClass('selected');
-    alert('mentoria agendada');
+    alert('MENTORIA AGENDADA COM SUCESSO!!!');
     console.log(selected);
   });
 });
