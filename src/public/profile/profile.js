@@ -1,3 +1,5 @@
+let id = queryString("id");
+
 function queryString(parameter){
     let loc = location.search.substring(1, location.search.length);
     let param_value = false;   
@@ -19,8 +21,6 @@ function queryString(parameter){
     }   
 }
 
-let id = queryString("id");
-
 function loadMentor(){
     const url = 'http://localhost:3333/user/'
 
@@ -28,11 +28,10 @@ function loadMentor(){
         $.get(url + id, function( data ){
             let myResponse = data.user
 
-            console.log(myResponse.name)
-
             $("#name-mentor").html(myResponse.name)
             $("#jobTitle-mentor").html(myResponse.jobTitle)
             $("#aboutMe").html(myResponse.about)
+            $("#tags-mentor").append(skillComponent(myResponse.skills))
         })
     })
 }
