@@ -1,3 +1,5 @@
+const token = localStorage.getItem('token');
+
 function loadMentors() {
   const url = 'https://squad-sixteen-backend.herokuapp.com/users';
 
@@ -5,7 +7,7 @@ function loadMentors() {
     $.ajax({
       url: url,
       type: 'GET',
-      headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+      headers: { Authorization: 'Bearer ' + token },
       success: function (data) {
         let myResponse = data.users.filter(isMentor && isMyProfile);
 
@@ -33,7 +35,7 @@ function searchMentorByName() {
       $.ajax({
         url: url + `?name=${searchValue}`,
         type: 'GET',
-        headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+        headers: { Authorization: 'Bearer ' + token },
         success: function (data) {
           let myResponse = data.users;
 
@@ -52,7 +54,7 @@ function searchMentorByName() {
       $.ajax({
         url: url + `?name=${searchValue}`,
         type: 'GET',
-        headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+        headers: { Authorization: 'Bearer ' + token },
         success: function (data) {
           let myResponse = data.users;
 
@@ -76,7 +78,7 @@ function isMentor(user) {
 }
 
 function isMyProfile(user) {
-  return user.id != localStorage.getItem('userID');
+  return user.id != localStorage.getItem('id');
 }
 
 function loadProfileImage() {
