@@ -65,6 +65,7 @@ header ul
     padding-bottom: 48px;
     display: flex;
     gap: 32px;
+    flex-wrap: wrap;
 }
 
 #col-01
@@ -224,8 +225,7 @@ h5
 {
     font-size: 14px;
     font-weight: 400;
-    margin: 24px;
-
+    margin: 24px
 }
 
 #avaliacoes
@@ -332,7 +332,6 @@ h5
     background: #FFFFFF;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
     border-radius: 100px;
-    box-sizing: border-box;
     border: 1px solid #36357E;
     font-weight: 600;
     font-size: 20px;
@@ -376,4 +375,60 @@ h5
 {
     opacity: 70% !important;
     cursor: default !important;
+}
+
+@media only screen and (max-width: 700px) {
+
+    header
+    {
+        max-height: 20.4vh;
+    }
+    
+    #logo
+    {
+        margin-left: 1.5vw;
+    }
+    
+    header ul
+    {
+        margin-right: 0.7vw;
+    }
+    
+    #container
+    {
+        padding-inline: 0vw;
+        padding-top: 15px;
+        padding-bottom: 73px;
+    }
+
+    .block
+    {
+        width: auto;
+    }
+
+    #profile-info
+    {
+        flex-wrap: wrap;
+        padding-left: 50px;
+    }
+
+    #dias, #horas, #duracao
+    {
+        flex-wrap: wrap;
+        max-width: 350px;
+    }
+
+    #agendamento
+    {
+        width: 564px;
+        height: auto;
+    }
+
+    .btn-resp
+    {
+        width: 35vw !important;
+        font-size: 10px;
+        margin-left: 15px;
+    }
+    
 }

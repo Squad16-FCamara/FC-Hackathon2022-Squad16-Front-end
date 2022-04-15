@@ -230,7 +230,7 @@ header ul
 #container
 {
     padding-inline: 0vw;
-    padding-top: 49px;
+    padding-top: 15px;
     padding-bottom: 73px;
 }
 
@@ -253,11 +253,6 @@ header ul
     width: 260px;
     height: 48px;
 
-}
-
-#container
-{
-    padding-top: 15px;
 }
 
 }
