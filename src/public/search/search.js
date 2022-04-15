@@ -1,11 +1,13 @@
+function teste(id) { 
+    window.location = "../profile/index.html?id=" + id
+ }
+
 function skillComponent(skills){
     ret = ''
 
     skills.forEach(skill => {
         ret = ret + `<p>${skill}</p> \n`; 
     })
-
-    console.log(ret)
 
     return ret;
 }
@@ -23,7 +25,7 @@ function mentorComponent(users){
             </div>
             </div>
             <div id="btns">
-            <button class="btn-agendar">Agendar mentoria</button>
+            <button onclick="teste(${users.id})" class="btn-agendar">Agendar mentoria</button>
             <button class="btn-perfil">Ver perfil</button>
             </div>
         </div>
