@@ -7,6 +7,17 @@ Este é o front-end da Technical Share, uma aplicação desenvolvida para o Hack
 Ela usa **html** com **css**, **javascript**, **express** e **socket.io**. É possível criar usuários, logar, procurar mentores, conversar com eles,
 avaliá-los e apresentar as tecnologias que o usuário está estudando. 
 
+<br/>
+    <h3 align='center'>Acesse o projeto no heroku para testar: <a href='https://squad-sixteen-frontend.herokuapp.com/'><strong>Technical Share</strong></a></h3>
+<br/>
+
+``` bash
+#Abaixo estão os dados fictícios de e-mail e senha para a navegação das telas:
+
+email: fcamara@yahoo.com
+senha: fcamara2022
+
+```
 
 <h2 align="center"> Dúvidas e bugs </h2>
 
