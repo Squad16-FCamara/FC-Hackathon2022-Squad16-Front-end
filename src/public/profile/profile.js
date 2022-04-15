@@ -1,4 +1,5 @@
 let id = queryString("id");
+let selected = [];
 
 function queryString(parameter){
     let loc = location.search.substring(1, location.search.length);
@@ -43,4 +44,27 @@ function loadMentor(){
 
 loadMentor()
 
+$(document).ready(function() {
+    $("#dias div").click(function() {
+        $(this).closest('#dias').find('div').removeClass('selected');
+        $(this).addClass('selected');
+    });
 
+    $("#horas p").click(function() {
+        $(this).closest('#horas').find('p').removeClass('selected');
+        $(this).addClass('selected');
+    });
+
+    $("#duracao p").click(function() {
+        $(this).closest('#duracao').find('p').removeClass('selected');
+        $(this).addClass('selected');
+    });
+
+    $("#agendar").click(function() {
+        selected.push((document.querySelectorAll('#dias .selected p')[0]).textContent);
+        selected.push((document.querySelectorAll('#dias .selected p')[1]).textContent);
+        selected.push((document.querySelector('#horas .selected')).textContent);
+        selected.push((document.querySelector('#duracao .selected')).textContent);
+        console.log(selected);
+    });
+});
