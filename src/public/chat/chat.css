@@ -314,6 +314,7 @@ button.enter_chat_btn {
 .active_users_list {
   width: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 10px;
 }
 

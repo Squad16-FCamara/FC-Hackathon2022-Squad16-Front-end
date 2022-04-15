@@ -6,13 +6,12 @@ const chatDisplay = document.getElementById('chat');
 const search = document.getElementById('search');
 
 let currentRoom = 'global';
-const myUsername = sessionStorage.getItem('username');
-const myId = parseInt(sessionStorage.getItem('id'));
+const myUsername = localStorage.getItem('username');
+const myId = parseInt(localStorage.getItem('id'));
 const socket = io('http://localhost:3333');
 let users = [];
 let selectedUser = undefined;
-const token = sessionStorage.getItem('token');
-// 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDk5Njg3ODUsImV4cCI6MTY1MjU2MDc4NSwic3ViIjoiNCJ9.thtre6C-vMd2pYQLVklUEjh9_rwUkRg2YYMYwMsUifo'
+const token = localStorage.getItem('token');
 
 // Send message on button click
 sendMessageBtn.addEventListener('click', () => {
@@ -62,8 +61,8 @@ socket.on('updateChat', ({ userId, content }) => {
 });
 
 socket.on('invalidToken', () => {
-  window.location.replace('/login');
-  //sessionStorage.clear()
+  window.location.replace('/');
+  //localStorage.clear()
 });
 
 function changeRoom(room) {
@@ -73,20 +72,16 @@ function changeRoom(room) {
 }
 
 async function loadChatData() {
-  console.log('Buscando data');
-  const rawData = await fetch('http://localhost:3333/connect', {
+  const fetchProps = {
     headers: {
       'Content-Type': 'application/json',
       authorization: 'Bearer ' + token,
     },
-  });
+  };
 
-  console.log('Deu certo');
-  console.log(rawData);
+  const rawData = await fetch('http://localhost:3333/connect', fetchProps);
 
   const { connectedUsers } = await rawData.json();
-
-  console.log(connectedUsers);
 
   users = connectedUsers;
 

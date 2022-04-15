@@ -1,4 +1,5 @@
 let selected = [];
+const token = localStorage.getItem('token');
 
 function queryString(parameter) {
   let loc = location.search.substring(1, location.search.length);
@@ -26,7 +27,7 @@ function loadMentor() {
     $.ajax({
       url: url + queryString('id'),
       type: 'GET',
-      headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+      headers: { Authorization: 'Bearer ' + token },
       success: function (data) {
         let myResponse = data.user;
 
@@ -78,5 +79,20 @@ $(document).ready(function () {
     $('p').removeClass('selected');
     alert('mentoria agendada');
     console.log(selected);
+
+    fetch('http://localhost:3333/connect', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: 'Bearer ' + token,
+      },
+      body: JSON.stringify({
+        mentorId: parseInt(queryString('id')),
+      }),
+    }).then((data) => {
+      if (data.status === 201 || data.status === 401) {
+        document.location.replace('/chat');
+      }
+    });
   });
 });
