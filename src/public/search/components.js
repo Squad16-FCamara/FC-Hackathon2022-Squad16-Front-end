@@ -18,7 +18,7 @@ function skillsToList(user) {
       if (value != '0') skills.push(key);
     }
   }
-
+  
   return skills;
 }
 
