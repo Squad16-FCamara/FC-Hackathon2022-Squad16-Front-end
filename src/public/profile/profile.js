@@ -42,7 +42,7 @@ function loadMentor() {
 
 function loadProfileImage() {
   $(document).ready(function () {
-    $('#mini-profile').attr('src', localStorage.getItem('profileImg'));
+    $('.mini-profile').attr('src', localStorage.getItem('profileImg'));
   });
 }
 

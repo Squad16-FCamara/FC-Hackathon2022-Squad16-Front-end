@@ -7,7 +7,7 @@ function loadMentors() {
       type: 'GET',
       headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
       success: function (data) {
-        let myResponse = data.users.filter(isMentor);
+        let myResponse = data.users.filter(isMentor && isMyProfile);
 
         myResponse.forEach((users) => {
           $(mentorComponent(users)).appendTo('#mentores');
@@ -73,9 +73,13 @@ function isMentor(user) {
   return user.mentor == true;
 }
 
+function isMyProfile(user) {
+  return user.id != localStorage.getItem("userID");
+}
+
 function loadProfileImage() {
   $(document).ready(function () {
-    $('#mini-profile').attr('src', localStorage.getItem('profileImg'));
+    $('.mini-profile').attr('src', localStorage.getItem('profileImg'));
   });
 }
 
