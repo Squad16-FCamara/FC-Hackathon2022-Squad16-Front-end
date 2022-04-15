@@ -95,7 +95,7 @@ header ul
     color: #262626;
     align-items: center;
     gap: 30px;
-    height: 218px;
+    padding-block: 24px;
 }
 
 #profile-photo
@@ -110,23 +110,24 @@ header ul
 #tags-mentor
 {
     display: flex;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 0px 8px;
     margin-right: 30px;
 }
 
 #tags-mentor p
 {
-    background: #36357E;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    background: rgba(254, 187, 162, 0.3);
     border-radius: 30px;
     font-family: 'Montserrat';
     text-align: center;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    color: #FFFFFF;
+    color: #FE662E;
     padding-block: 8px;
     padding-inline: 16px;
+    margin-block: 2px;
 }
 
 #social-links
@@ -262,7 +263,7 @@ h5
     height: 71px;
 }
 
-.dia p
+.dia p, .dia-selected p
 {
     margin: 2px;
 }
@@ -363,4 +364,16 @@ h5
 .btn-agendar:hover
 {
     opacity: 50%;
+}
+
+.selected
+{
+    border: 2px solid #FE662E !important;
+    opacity: 70%;
+}
+
+.selected:hover
+{
+    opacity: 70% !important;
+    cursor: default !important;
 }
