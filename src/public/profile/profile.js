@@ -73,6 +73,9 @@ $(document).ready(function() {
         selected.push((document.querySelectorAll('#dias .selected p')[1]).textContent);
         selected.push((document.querySelector('#horas .selected')).textContent);
         selected.push((document.querySelector('#duracao .selected')).textContent);
+        $('div').removeClass('selected');
+        $('p').removeClass('selected');
+        alert('mentoria agendada');
         console.log(selected);
     });
 });
