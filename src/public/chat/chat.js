@@ -1,94 +1,192 @@
-class InteractiveChatbox {
-  constructor(a, b, c) {
-    this.args = {
-      button: a,
-      chatbox: b,
-    };
-    this.icons = c;
-    this.state = false;
+const userlist = document.getElementById('active_users_list');
+const roomlist = document.getElementById('active_rooms_list');
+const message = document.getElementById('messageInput');
+const sendMessageBtn = document.getElementById('send_message_btn');
+const chatDisplay = document.getElementById('chat');
+const search = document.getElementById('search');
+
+let currentRoom = 'global';
+const myUsername = sessionStorage.getItem('username');
+const myId = parseInt(sessionStorage.getItem('id'));
+const socket = io('http://localhost:3333');
+let users = [];
+let selectedUser = undefined;
+const token = sessionStorage.getItem('token');
+// 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDk5Njg3ODUsImV4cCI6MTY1MjU2MDc4NSwic3ViIjoiNCJ9.thtre6C-vMd2pYQLVklUEjh9_rwUkRg2YYMYwMsUifo'
+
+// Send message on button click
+sendMessageBtn.addEventListener('click', () => {
+  if (!selectedUser) {
+    return;
   }
 
-  display() {
-    const { button, chatbox } = this.args;
+  socket.emit('sendMessage', {
+    mentorId: selectedUser.id,
+    content: message.value,
+    token: token,
+  });
+  message.value = '';
+});
 
-    button.addEventListener('click', () => this.toggleState(chatbox));
+search.addEventListener('change', updateUserList);
+
+// Send message on enter key press
+message.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    sendMessageBtn.click();
   }
+});
 
-  toggleState(chatbox) {
-    this.state = !this.state;
-    this.showOrHideChatBox(chatbox, this.args.button);
-  }
+// Prompt for username on connecting to server
+socket.on('connect', () => {
+  console.log('Connected');
+});
 
-  showOrHideChatBox(chatbox, button) {
-    if (this.state) {
-      chatbox.classList.add('chatbox--active');
-      this.toggleIcon(true, button);
-    } else if (!this.state) {
-      chatbox.classList.remove('chatbox--active');
-      this.toggleIcon(false, button);
-    }
-  }
+socket.on('updateChat', ({ userId, content }) => {
+  console.log('Displaying user message');
+  console.log(userId === myId);
 
-  toggleIcon(state, button) {
-    const { isClicked, isNotClicked } = this.icons;
-    let b = button.children[0].innerHTML;
+  chatDisplay.innerHTML += `<div class="message_holder ${
+    userId === myId ? 'me' : ''
+  }">
+                                <div class="message_box">
+                                  <div id="message" class="${
+                                    userId === myId ? 'my_message' : 'message'
+                                  }">
+                                    <span class="message_text">${content}</span>
+                                  </div>
+                                </div>
+                              </div>`;
 
-    if (state) {
-      button.children[0].innerHTML = isClicked;
-    } else if (!state) {
-      button.children[0].innerHTML = isNotClicked;
-    }
+  chatDisplay.scrollTop = chatDisplay.scrollHeight;
+});
+
+socket.on('invalidToken', () => {
+  window.location.replace('/login');
+  //sessionStorage.clear()
+});
+
+function changeRoom(room) {
+  if (room != currentRoom) {
+    socket.emit('updateRooms', room);
   }
 }
 
-const chatButton = document.querySelector('.chatbox__button');
-const chatContent = document.querySelector('.chatbox__support');
-const icons = {
-  isClicked: 'Clicado',
-  isNotClicked: 'Sem clicar',
-};
-const chatbox = new InteractiveChatbox(chatButton, chatContent, icons);
-chatbox.display();
-chatbox.toggleIcon(false, chatButton);
+async function loadChatData() {
+  console.log('Buscando data');
+  const rawData = await fetch('http://localhost:3333/connect', {
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: 'Bearer ' + token,
+    },
+  });
 
-(function () {
-  const sendBtn = document.querySelector('#send');
-  const messages = document.querySelector('#messages');
-  const messageBox = document.querySelector('#messageBox');
+  console.log('Deu certo');
+  console.log(rawData);
 
-  let ws;
+  const { connectedUsers } = await rawData.json();
 
-  function showMessage(message) {
-    messages.textContent += `\n\n${message}`;
-    messages.scrollTop = messages.scrollHeight;
-    messageBox.value = '';
+  console.log(connectedUsers);
+
+  users = connectedUsers;
+
+  loadUsers(users);
+
+  selectedUser = users[0];
+
+  changeUser(0);
+}
+
+function loadUsers(usersToLoad) {
+  let x = 0;
+  usersToLoad.forEach((user) => {
+    console.log(user.about.length);
+    userlist.innerHTML += `<div id="user-${x}" class="user_container" onclick="changeUser(${x})">
+    <img id="user-image-${x}" class="image_blue_border" src="../images/user-image-teste.jpg" alt="">
+    <div class="name_description">
+      <h3 class="user_name">${user.name}</h3>
+      <p class="user_description">${
+        user.about.length < 143
+          ? user.about
+          : user.about.substring(0, 140) + '...'
+      }</p>
+    </div>
+  </div>`;
+    x++;
+  });
+}
+
+function changeUser(id) {
+  const oldUser = document.getElementById(
+    'user-' + users.indexOf(selectedUser).toString()
+  );
+  const oldUserImage = document.getElementById(
+    'user-image-' + users.indexOf(selectedUser).toString()
+  );
+  oldUser.classList.remove('user_orange_border');
+  oldUserImage.classList.remove('image_orange_border');
+
+  const user = document.getElementById('user-' + id);
+  const userImage = document.getElementById('user-image-' + id);
+  user.classList.add('user_orange_border');
+  userImage.classList.add('image_orange_border');
+
+  selectedUser = users[id];
+
+  const activeUser = document.getElementById('active_user');
+  const activeDescription = document.getElementById('activer_description');
+  activeUser.innerHTML = selectedUser.name;
+  activeDescription.innerHTML = selectedUser.jobTitle;
+
+  updateChat();
+  console.log(id);
+}
+
+loadChatData();
+
+function updateUserList() {
+  console.log(search.value);
+
+  userlist.innerHTML = '';
+
+  searchUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(search.value.toLowerCase())
+  );
+
+  console.log(searchUsers);
+
+  loadUsers(searchUsers);
+}
+
+console.log('Hihihi  :', document);
+
+function getUserName(id) {
+  const messageUser = users.find((user) => user.id === id);
+
+  if (!messageUser) {
+    return myUsername;
   }
 
-  function init() {
-    if (ws) {
-      ws.onerror = ws.onopen = ws.onclose = null;
-      ws.close();
-    }
+  return messageUser.name;
+}
 
-    ws = new WebSocket('ws://localhost:6969');
-    ws.onopen = () => {
-      console.log('Connection opened!');
-    };
-    ws.onmessage = ({ data }) => showMessage(data);
-    ws.onclose = function () {
-      ws = null;
-    };
-  }
-
-  sendBtn.onclick = function () {
-    if (!ws) {
-      showMessage('No WebSocket connection :(');
-      return;
-    }
-
-    ws.send(messageBox.value);
-    showMessage(messageBox.value);
-  };
-
-  init();
-})();
+function updateChat() {
+  console.log(selectedUser);
+  chatDisplay.innerHTML = '';
+  selectedUser.messages.forEach(({ senderId, content }) => {
+    console.log(senderId);
+    chatDisplay.innerHTML += `<div class="message_holder ${
+      senderId === myId ? 'me' : ''
+    }">
+                                  <div class="message_box">
+                                    <div id="message" class="${
+                                      senderId === myId
+                                        ? 'my_message'
+                                        : 'message'
+                                    }">
+                                      <span class="message_text">${content}</span>
+                                    </div>
+                                  </div>
+                                </div>`;
+  });
+}
