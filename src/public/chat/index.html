@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>technicalshare chat</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="chat.css" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"
+      integrity="sha512-PU5S6BA03fRv1Q5fpwXjg5nlRrgdoguZ74urFInkbABMCENyx5oP3hrDzYMMPh3qdLdknIvrGj3yqZ4JuU7Nag=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+
+  <body>
+
+
+    <div id="popup_chat" class="app">
+      <div class="chat_app">
+        <div id="sidebar" class="left_sidebar">
+          <div class="search-bar">
+            <ion-icon name="search-outline"></ion-icon>
+            <input
+              id="search"
+              type="text"
+              placeholder="Pesquisar conversa ..."
+            />
+          </div>
+
+          <div id="active_users_list" class="active_users_list">
+
+          </div>
+        </div>
+
+        <div class="chat_area">
+          <div class="chat_bg">
+            <div class="light_blue_background">
+              <img
+                class="image_blue_border"
+                src="../images/user-image-teste.jpg"
+                alt=""
+              />
+              <div class="name_description">
+                <h3 id="active_user" class="user_name">Nome</h3>
+                <p id="activer_description" class="user_description">Descrição</p>
+              </div>
+            </div>
+
+            <div id="chat" class="chat"></div>
+
+            <div class="chat_input">
+              <input
+                type="text"
+                id="messageInput"
+                placeholder="Escreva uma mensagem..."
+              />
+              <button id="send_message_btn" class="send_message_btn" id="send">
+                ENVIAR
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!--<div class="right_sidebar">
+          <span class="room_label">Salas</span>
+          <div id="active_rooms_list" class="active_rooms_list"></div>
+
+          <div class="room_input">
+            <input type="text" id="roomInput" placeholder="Crie uma sala..." />
+            <button id="room_add_icon_holder" class="room_add_icon_holder">
+              +
+            </button>
+          </div>
+        </div>-->
+      </div>
+    </div>
+
+
+    <button class="buttonChat" id="popup_button">
+      <img src="../images/logo-chat.png" alt="Botão chat" />
+    </button>
+
+
+    <script src="chat.js"></script>
+    <script src="popup.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  </body>
+</html>
