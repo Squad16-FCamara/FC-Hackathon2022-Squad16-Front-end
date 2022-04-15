@@ -35,7 +35,7 @@ function loadMentor(){
                 $("#name-mentor").html(myResponse.name)
                 $("#jobTitle-mentor").html(myResponse.jobTitle)
                 $("#aboutMe").html(myResponse.about)
-                $("#tags-mentor").append(skillComponent(myResponse.skills))
+                $("#tags-mentor").append(skillComponent(skillsToList(myResponse)))
                 $(".profile-photo").attr('src', myResponse.profileImgUrl)
             }
         })
