@@ -1,4 +1,3 @@
-let id = queryString("id");
 let selected = [];
 
 function queryString(parameter){
@@ -27,7 +26,7 @@ function loadMentor(){
 
     $(document).ready(function(){
         $.ajax({
-            url: url + id,
+            url: url + queryString("id"),
             type: 'GET',
             headers: { Authorization: "Bearer " + localStorage.getItem("token") },
             success: function ( data ){
