@@ -16,8 +16,8 @@ function login(){
                 },
                 success: function ( data ){
                     localStorage.setItem('token', data.token)
+                    localStorage.setItem('profileImg', data.user.profileImgUrl)
                     window.location = "../search/index.html"
-    
                 }
             })
         })  

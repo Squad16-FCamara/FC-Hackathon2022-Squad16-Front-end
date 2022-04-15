@@ -11,7 +11,7 @@ function skillComponent(skills) {
 function mentorComponent(user) {
     return (`
         <div id="mentor">
-            <img src="../../images/perfil.png" alt="foto do mentor" id="profile">
+            <img src="${user.profileImgUrl}" alt="foto do mentor" id="profile">
             <div id="mentor-info">
             <h3 style="font-weight: 600;">${user.name}</h3>
             <h6 style="font-weight: 500; margin-bottom: 16px;">${user.jobTitle}</h6>
