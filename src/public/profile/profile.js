@@ -1,5 +1,3 @@
-let id = queryString("id");
-
 function queryString(parameter){
     let loc = location.search.substring(1, location.search.length);
     let param_value = false;   
@@ -26,7 +24,7 @@ function loadMentor(){
 
     $(document).ready(function(){
         $.ajax({
-            url: url + id,
+            url: url + queryString("id"),
             type: 'GET',
             headers: { Authorization: "Bearer " + localStorage.getItem("token") },
             success: function ( data ){
