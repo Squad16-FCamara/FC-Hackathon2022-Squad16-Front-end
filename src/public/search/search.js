@@ -73,5 +73,12 @@ function isMentor(user){
     return user.mentor == true;
 }
 
+function loadProfileImage(){
+    $(document).ready(function(){
+        $("#mini-profile").attr('src', localStorage.getItem("profileImg"))
+    })
+}
+
 loadMentors()
 searchMentorByName()
+loadProfileImage()

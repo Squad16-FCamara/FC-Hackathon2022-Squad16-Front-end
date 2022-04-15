@@ -37,11 +37,19 @@ function loadMentor(){
                 $("#jobTitle-mentor").html(myResponse.jobTitle)
                 $("#aboutMe").html(myResponse.about)
                 $("#tags-mentor").append(skillComponent(myResponse.skills))
+                $(".profile-photo").attr('src', myResponse.profileImgUrl)
             }
         })
     })
 }
 
+function loadProfileImage(){
+    $(document).ready(function(){
+        $("#mini-profile").attr('src', localStorage.getItem("profileImg"))
+    })
+}
+
+loadProfileImage()
 loadMentor()
 
 $(document).ready(function() {
