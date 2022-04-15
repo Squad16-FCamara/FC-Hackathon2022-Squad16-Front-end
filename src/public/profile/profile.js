@@ -66,6 +66,10 @@ $(document).ready(function () {
     $(this).addClass('selected');
   });
 
+  $('#close').click(function () {
+    $('#confirmacao').addClass('off');
+  });
+
   $('#agendar').click(function () {
     selected.push(
       document.querySelectorAll('#dias .selected p')[0].textContent
@@ -75,10 +79,11 @@ $(document).ready(function () {
     );
     selected.push(document.querySelector('#horas .selected').textContent);
     selected.push(document.querySelector('#duracao .selected').textContent);
+
     $('div').removeClass('selected');
     $('p').removeClass('selected');
-    alert('MENTORIA AGENDADA COM SUCESSO!!!');
-    console.log(selected);
+
+    $('#confirmacao').removeClass('off');
 
     fetch('https://squad-sixteen-backend.herokuapp.com/connect', {
       method: 'POST',
@@ -91,7 +96,9 @@ $(document).ready(function () {
       }),
     }).then((data) => {
       if (data.status === 201 || data.status === 401) {
-        document.location.replace('/chat');
+        setTimeout(function(){
+          document.location.replace('/chat');
+        }, 2500)
       }
     });
   });
