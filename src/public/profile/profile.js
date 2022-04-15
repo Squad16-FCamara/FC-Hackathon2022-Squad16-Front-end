@@ -1,4 +1,4 @@
-let id = queryString('id');
+let selected = [];
 
 function queryString(parameter) {
   let loc = location.search.substring(1, location.search.length);
@@ -24,7 +24,7 @@ function loadMentor() {
 
   $(document).ready(function () {
     $.ajax({
-      url: url + id,
+      url: url + queryString('id'),
       type: 'GET',
       headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
       success: function (data) {
@@ -33,7 +33,7 @@ function loadMentor() {
         $('#name-mentor').html(myResponse.name);
         $('#jobTitle-mentor').html(myResponse.jobTitle);
         $('#aboutMe').html(myResponse.about);
-        $('#tags-mentor').append(skillComponent(myResponse.skills));
+        $('#tags-mentor').append(skillComponent(skillsToList(myResponse)));
         $('.profile-photo').attr('src', myResponse.profileImgUrl);
       },
     });
@@ -48,3 +48,35 @@ function loadProfileImage() {
 
 loadProfileImage();
 loadMentor();
+
+$(document).ready(function () {
+  $('#dias div').click(function () {
+    $(this).closest('#dias').find('div').removeClass('selected');
+    $(this).addClass('selected');
+  });
+
+  $('#horas p').click(function () {
+    $(this).closest('#horas').find('p').removeClass('selected');
+    $(this).addClass('selected');
+  });
+
+  $('#duracao p').click(function () {
+    $(this).closest('#duracao').find('p').removeClass('selected');
+    $(this).addClass('selected');
+  });
+
+  $('#agendar').click(function () {
+    selected.push(
+      document.querySelectorAll('#dias .selected p')[0].textContent
+    );
+    selected.push(
+      document.querySelectorAll('#dias .selected p')[1].textContent
+    );
+    selected.push(document.querySelector('#horas .selected').textContent);
+    selected.push(document.querySelector('#duracao .selected').textContent);
+    $('div').removeClass('selected');
+    $('p').removeClass('selected');
+    alert('mentoria agendada');
+    console.log(selected);
+  });
+});

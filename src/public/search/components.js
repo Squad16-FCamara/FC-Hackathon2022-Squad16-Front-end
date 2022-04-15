@@ -1,3 +1,27 @@
+function skillsToList(user) {
+  let skills = [];
+
+  for (const [key, value] of Object.entries(user)) {
+    if (
+      key == 'c' ||
+      key == 'cpp' ||
+      key == 'css' ||
+      key == 'html' ||
+      key == 'java' ||
+      key == 'javascript' ||
+      key == 'julia' ||
+      key == 'python' ||
+      key == 'r' ||
+      key == 'ruby' ||
+      key == 'typescript'
+    ) {
+      if (value != '0') skills.push(key);
+    }
+  }
+
+  return skills;
+}
+
 function skillComponent(skills) {
   ret = '';
 
@@ -19,7 +43,7 @@ function mentorComponent(user) {
             }</h6>
             <p style="font-weight: 400; margin-bottom: 24px;">${user.about}</p>
             <div id="tags-mentor">
-                ${skillComponent(user.skills)}
+                ${skillComponent(skillsToList(user))}
             </div>
             </div>
             <div id="btns">
