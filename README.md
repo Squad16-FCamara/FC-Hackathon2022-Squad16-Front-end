@@ -4,7 +4,7 @@
 <h2 align="center"> Descrição </h2>
 
 Este é o front-end da Technical Share, uma aplicação desenvolvida para o Hackathon do Programa de Formação da FCamara - Season 3. 
-Ela usa **html** com **css**, **javascript**, **express** e **socket.io**. É possível criar usuários, logar, procurar mentores, conversar com eles,
+Ela usa **html** com **css**, **javascript**, **bootstrap**, **express** e **socket.io**. É possível criar usuários, logar, procurar mentores, conversar com eles,
 avaliá-los e apresentar as tecnologias que o usuário está estudando. 
 
 <br/>
